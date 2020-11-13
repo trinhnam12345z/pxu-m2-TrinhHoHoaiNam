@@ -1,0 +1,86 @@
+﻿@model List<Books>
+
+<div>
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Book List</h2>
+        </div>
+
+        <div class="col-6 text-right">
+            <a asp-controller="Book" asp-action="Create" class="btn btn-primary">
+                Create New Book
+            </a>
+        </div>
+    </div>
+    <form method="post" asp-action="Index">
+        <div class="row m-2  ">
+            <input class="form-control mr-2  " type="search" placeholder="Enter book name ..." value="@ViewData["GetBook"]" name="BookSearch" style="width:500px;"/>
+            <input type="submit" value="Search" class="btn btn-primary mr-2 "/>
+            <a asp-action="Index" class="btn btn-info">Get all book</a>
+        </div>
+    </form>
+
+    @if (Model.Count() > 0)
+    {
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Book Name
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Short Content
+            </th>
+            <th>
+                Public Year
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Category Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var books in Model)
+        {
+        <tr>
+            <td width="20%">
+                @books.Name
+            </td>
+            <td width="15%">
+                @books.Author
+            </td>
+            <td width="20%">
+                @books.ShortContent
+            </td>
+            <td width="10%">
+                @books.PublicYear
+            </td>
+            <td width="10%">
+                @books.Amount
+            </td>
+            <td width="10%">
+                @*books.Category.Name*@
+                @*Nếu e cho hiện catagory name thì tìm kiếm không được bọ lỗi, còn tắt thì tìm đc !*@
+            </td>
+            <td>
+                <div>
+                    <a asp-controller="Book" asp-action="Edit" asp-route-Id="@books.Id" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Book" asp-action="Delete" asp-route-Id="@books.Id" class="btn btn-danger">Delete</a>
+                </div>
+            </td>
+        </tr>                }
+    </tbody>
+</table> }
+            else
+            {
+<p>Không tồn tại thể loại trong database</p>}
+
+
+</div>

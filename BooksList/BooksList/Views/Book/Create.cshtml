@@ -1,0 +1,88 @@
+﻿@model BookCreateVM
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row ml-5 ">
+            <h2 class="text-info">Add Category</h2>
+        </div>
+
+        <div class="row ml-5 ">
+            <div class="col-8">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="books.Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="books.Name" class="form-control" />
+                        <span asp-validation-for="books.Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="books.Author"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="books.Author" class="form-control" />
+                        <span asp-validation-for="books.Author" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="books.ShortContent"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="books.ShortContent" class="form-control"></textarea>
+                        <span asp-validation-for="books.ShortContent" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="books.PublicYear"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="books.PublicYear" class="form-control"></input>
+                        <span asp-validation-for="books.PublicYear" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="books.Amount"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="books.Amount" class="form-control"></input>
+                        <span asp-validation-for="books.Amount" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="books.CategoryId"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="books.CategoryId" asp-items="@Model.CategorySelectList" class="form-control">
+                            <option disabled selected>Vui lòng chọn Category</option>
+                        </select>
+                        <span asp-validation-for="books.CategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="row form-group">
+                    <div class="col">
+                        <input type="submit" value="Create" class="btn btn-info" onclick="return validateInput()" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
